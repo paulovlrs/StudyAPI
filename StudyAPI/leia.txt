@@ -1,0 +1,5 @@
+﻿Baixar o node
+Acessar o terminal ou power shell
+usar o comando "npm install -g json-server"
+Acessar a pasta onde contem o arquivo "db.json" pelo terminal
+usar o comando "json-server --watch db.json"
