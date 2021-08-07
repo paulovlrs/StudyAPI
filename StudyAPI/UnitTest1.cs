@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 using RestSharp;
+using RestSharp.Authenticators;
 using RestSharp.Serialization.Json;
 using StudyAPI.Models;
 using StudyAPI.Utils;
@@ -40,10 +41,10 @@ namespace StudyAPI
       request.AddJsonBody(new { name = "Paulo", lastname = "Silva" });
 
       var response = cliente.Execute(request);
-      
+
       // pego o nome do campo como resultado
       var result = response.DeserializeResponse()["name"];
-      
+
       Assert.That(result, Is.EqualTo("Paulo"), "Author is not correct");
     }
 
@@ -80,6 +81,30 @@ namespace StudyAPI
       var resposta = cliente.ExecutePostAsync<Posts>(request).GetAwaiter().GetResult();
 
       Assert.That(resposta.Data.Title, Is.EqualTo("Aprendendo a usar RestSharp"), "O título está incorreto!!!");
+    }
+
+    [Test]
+    public void AuthenticationMechanism()
+    {
+      var client = new RestClient("http://localhost:3000/");
+
+      var request = new RestRequest("auth/login", Method.POST);
+
+      request.RequestFormat = DataFormat.Json;
+      request.AddBody(new { email = "paulo@email.com", password = "123456" });
+
+      var response = client.ExecutePostTaskAsync(request).GetAwaiter().GetResult();
+      var access_token = response.DeserializeResponse()["access_token"];
+
+      var jwtAuth = new JwtAuthenticator(access_token);
+      client.Authenticator = jwtAuth;
+
+      var getRequest = new RestRequest("products/{postid}", Method.GET);
+      getRequest.AddUrlSegment("postid", 1);
+
+      // Desserialização generica
+      var result = client.ExecuteAsyncRequest<Products>(getRequest).GetAwaiter().GetResult();
+      Assert.That(result.Data.Name, Is.EqualTo("Product001"), "O produto está incorreto!!!");
     }
   }
 }

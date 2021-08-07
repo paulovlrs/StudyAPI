@@ -111,6 +111,7 @@
     <Compile Include="Base\Settings.cs" />
     <Compile Include="Hooks\TestInitialize.cs" />
     <Compile Include="Models\Posts.cs" />
+    <Compile Include="Models\Products.cs" />
     <Compile Include="Steps\GetPostsSteps.cs" />
     <Compile Include="Steps\PostProfileSteps.cs" />
     <Compile Include="UnitTest1.cs" />
