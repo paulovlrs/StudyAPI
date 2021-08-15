@@ -1,6 +1,8 @@
 ﻿Feature: GetPosts
 	Teste GET posts opretaion with RestSharp.net
 
+	#Deve ser iniciado o JSON Server para iniciar este teste
+
 Scenario: Verificar o autor do posts 1
 	Given que eu realizo a operação GET para o <url>
 	And que eu realizo a operação post para o <ID>

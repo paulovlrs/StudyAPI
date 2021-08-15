@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 using RestSharp;
 using RestSharp.Authenticators;
@@ -7,6 +8,7 @@ using StudyAPI.Models;
 using StudyAPI.Utils;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace StudyAPI
@@ -92,6 +94,33 @@ namespace StudyAPI
 
       request.RequestFormat = DataFormat.Json;
       request.AddBody(new { email = "paulo@email.com", password = "123456" });
+
+      var response = client.ExecutePostTaskAsync(request).GetAwaiter().GetResult();
+      var access_token = response.DeserializeResponse()["access_token"];
+
+      var jwtAuth = new JwtAuthenticator(access_token);
+      client.Authenticator = jwtAuth;
+
+      var getRequest = new RestRequest("products/{postid}", Method.GET);
+      getRequest.AddUrlSegment("postid", 1);
+
+      // Desserialização generica
+      var result = client.ExecuteAsyncRequest<Products>(getRequest).GetAwaiter().GetResult();
+      Assert.That(result.Data.Name, Is.EqualTo("Product001"), "O produto está incorreto!!!");
+    }
+
+    [Test]
+    public void AuthenticationMechanismWithJSONFile()
+    {
+      var client = new RestClient("http://localhost:3000/");
+
+      var request = new RestRequest("auth/login", Method.POST);
+
+      var file = @"TestData\Data.json";
+
+      request.RequestFormat = DataFormat.Json;
+      var jsonData = JsonConvert.DeserializeObject<User>(File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, file)).ToString());
+      request.AddJsonBody(jsonData);
 
       var response = client.ExecutePostTaskAsync(request).GetAwaiter().GetResult();
       var access_token = response.DeserializeResponse()["access_token"];

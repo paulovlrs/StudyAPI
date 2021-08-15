@@ -110,14 +110,14 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-                TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
                             "name",
                             "profile"});
-                table1.AddRow(new string[] {
+                table3.AddRow(new string[] {
                             "Sams",
                             "2"});
 #line 6
- testRunner.Given("I Perform POST operation for \"/post/{profile}/profile\" with body", ((string)(null)), table1, "Given ");
+ testRunner.Given("I Perform POST operation for \"/post/{profile}/profile\" with body", ((string)(null)), table3, "Given ");
 #line hidden
 #line 9
  testRunner.Then(string.Format("devo visualizar na {0} o valor {1}", chave, valor), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");

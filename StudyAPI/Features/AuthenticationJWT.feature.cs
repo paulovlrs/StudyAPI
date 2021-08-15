@@ -20,22 +20,22 @@ namespace StudyAPI.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("GetPosts")]
-    public partial class GetPostsFeature
+    [NUnit.Framework.DescriptionAttribute("AuthenticationJWT")]
+    public partial class AuthenticationJWTFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
         private string[] _featureTags = ((string[])(null));
         
-#line 1 "GetPosts.feature"
+#line 1 "AuthenticationJWT.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "GetPosts", "\tTeste GET posts opretaion with RestSharp.net", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "AuthenticationJWT", "\tTest GET and POST operation with Authentication JWT", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -74,9 +74,9 @@ namespace StudyAPI.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Verificar o autor do posts 1")]
-        [NUnit.Framework.TestCaseAttribute("posts/{postid}", "author", "Karthik KK", "1", null)]
-        public virtual void VerificarOAutorDoPosts1(string url, string chave, string valor, string iD, string[] exampleTags)
+        [NUnit.Framework.DescriptionAttribute("Gerar token e visualizar produto 1")]
+        [NUnit.Framework.TestCaseAttribute("products/{postid}", "name", "Product001", "1", null)]
+        public virtual void GerarTokenEVisualizarProduto1(string url, string chave, string valor, string iD, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
@@ -84,7 +84,7 @@ namespace StudyAPI.Features
             argumentsOfScenario.Add("chave", chave);
             argumentsOfScenario.Add("valor", valor);
             argumentsOfScenario.Add("ID", iD);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verificar o autor do posts 1", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Gerar token e visualizar produto 1", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 6
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -105,13 +105,22 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
+                TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Email",
+                            "Password"});
+                table1.AddRow(new string[] {
+                            "paulo@email.com",
+                            "123456"});
 #line 7
- testRunner.Given(string.Format("que eu realizo a operação GET para o {0}", url), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I get JWT authentication of user with following details", ((string)(null)), table1, "Given ");
 #line hidden
-#line 8
- testRunner.And(string.Format("que eu realizo a operação post para o {0}", iD), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 10
+ testRunner.And(string.Format("que eu realizo a operação GET para o {0}", url), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 9
+#line 11
+ testRunner.When(string.Format("solicito a resposta para o {0}", iD), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 12
  testRunner.Then(string.Format("devo visualizar na {0} o valor {1}", chave, valor), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -119,9 +128,9 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Verificar o autor do posts 2")]
-        [NUnit.Framework.TestCaseAttribute("posts/{postid}", "title", "json-server", "2", null)]
-        public virtual void VerificarOAutorDoPosts2(string url, string chave, string valor, string iD, string[] exampleTags)
+        [NUnit.Framework.DescriptionAttribute("Gerar token e visualizar produto 2")]
+        [NUnit.Framework.TestCaseAttribute("products/{postid}", "name", "Product002", "2", null)]
+        public virtual void GerarTokenEVisualizarProduto2(string url, string chave, string valor, string iD, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
@@ -129,53 +138,8 @@ this.ScenarioInitialize(scenarioInfo);
             argumentsOfScenario.Add("chave", chave);
             argumentsOfScenario.Add("valor", valor);
             argumentsOfScenario.Add("ID", iD);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verificar o autor do posts 2", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 15
-this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            bool isScenarioIgnored = default(bool);
-            bool isFeatureIgnored = default(bool);
-            if ((tagsOfScenario != null))
-            {
-                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((this._featureTags != null))
-            {
-                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((isScenarioIgnored || isFeatureIgnored))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                this.ScenarioStart();
-#line 16
- testRunner.Given(string.Format("que eu realizo a operação GET para o {0}", url), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 17
- testRunner.And(string.Format("que eu realizo a operação post para o {0}", iD), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Gerar token e visualizar produto 2", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 18
- testRunner.Then(string.Format("devo visualizar na {0} o valor {1}", chave, valor), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            }
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Verificar o autor do posts 6")]
-        [NUnit.Framework.TestCaseAttribute("posts/{postid}", "author", "ExecuteAutomation", "6", null)]
-        public virtual void VerificarOAutorDoPosts6(string url, string chave, string valor, string iD, string[] exampleTags)
-        {
-            string[] tagsOfScenario = exampleTags;
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            argumentsOfScenario.Add("url", url);
-            argumentsOfScenario.Add("chave", chave);
-            argumentsOfScenario.Add("valor", valor);
-            argumentsOfScenario.Add("ID", iD);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verificar o autor do posts 6", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 24
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -195,13 +159,22 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 25
- testRunner.Given(string.Format("que eu realizo a operação GET para o {0}", url), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+                TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Email",
+                            "Password"});
+                table2.AddRow(new string[] {
+                            "paulo@email.com",
+                            "123456"});
+#line 19
+ testRunner.Given("I get JWT authentication of user with following details", ((string)(null)), table2, "Given ");
 #line hidden
-#line 26
- testRunner.And(string.Format("que eu realizo a operação post para o {0}", iD), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 22
+ testRunner.And(string.Format("que eu realizo a operação GET para o {0}", url), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 27
+#line 23
+ testRunner.When(string.Format("solicito a resposta para o {0}", iD), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 24
  testRunner.Then(string.Format("devo visualizar na {0} o valor {1}", chave, valor), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

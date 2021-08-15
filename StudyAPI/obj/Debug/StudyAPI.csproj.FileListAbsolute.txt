@@ -52,3 +52,4 @@ D:\OneDrive\Automation\StudyAPI\StudyAPI\obj\Debug\StudyAPI.csproj.CopyComplete
 D:\OneDrive\Automation\StudyAPI\StudyAPI\obj\Debug\StudyAPI.dll
 D:\OneDrive\Automation\StudyAPI\StudyAPI\obj\Debug\StudyAPI.pdb
 D:\OneDrive\Automation\StudyAPI\StudyAPI\obj\Debug\StudyAPI.csprojAssemblyReference.cache
+D:\OneDrive\Automation\StudyAPI\StudyAPI\bin\Debug\TestData\Data.json

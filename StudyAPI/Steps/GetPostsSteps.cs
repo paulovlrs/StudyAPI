@@ -31,6 +31,13 @@ namespace StudyAPI.Steps
       _settings.Response = _settings.RestClient.ExecuteAsyncRequest<Posts>(_settings.Request).GetAwaiter().GetResult();
     }
 
+    [When(@"solicito a resposta para o (.*)")]
+    public void WhenSolicitoARespostaParaO(string id)
+    {
+      _settings.Request.AddUrlSegment("postid", id);
+      _settings.Response = _settings.RestClient.ExecuteAsyncRequest<Posts>(_settings.Request).GetAwaiter().GetResult();
+    }
+
     [Then(@"devo visualizar na (.*) o valor (.*)")]
     public void ThenDevoVisualizarNaOValor(string chave, string valor)
     {

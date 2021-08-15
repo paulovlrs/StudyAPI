@@ -112,6 +112,8 @@
     <Compile Include="Hooks\TestInitialize.cs" />
     <Compile Include="Models\Posts.cs" />
     <Compile Include="Models\Products.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Steps\CommonSteps.cs" />
     <Compile Include="Steps\GetPostsSteps.cs" />
     <Compile Include="Steps\PostProfileSteps.cs" />
     <Compile Include="UnitTest1.cs" />
@@ -120,9 +122,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Features\AuthenticationJWT.feature" />
     <None Include="Features\GetPosts.feature" />
     <None Include="Features\PostProfile.feature" />
-    <None Include="JSON Server\db.json" />
+    <EmbeddedResource Include="TestData\Data.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <None Include="TestData\db.json" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
